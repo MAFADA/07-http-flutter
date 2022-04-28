@@ -20,20 +20,55 @@ class MovieDetail extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text(movie.title!),
+        title: Text(movie.title! + " /2031710168/M. Afada Nur Saiva Syahira"),
       ),
       body: SingleChildScrollView(
         child: Center(
             child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               height: height / 1.5,
               child: Image.network(path),
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: <Widget>[
+                      const Icon(Icons.star_rate_sharp),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      const Text("Rating"),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      Text(movie.voteAverage.toString()),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      const Icon(Icons.date_range_rounded),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      const Text("Release Date"),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      Text(movie.releaseDate!),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      const Icon(Icons.language_rounded),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      const Text("Language"),
+                      const Padding(padding: EdgeInsets.only(top: 5)),
+                      Text(movie.originalLanguage!.toUpperCase()),
+                    ],
+                  ),
+                ],
+              ),
+            ),
             Container(
                 child: Text(movie.overview!),
-                padding: EdgeInsets.only(left: 16, right: 16)),
+                padding: const EdgeInsets.only(top: 16, left: 16, right: 16)),
           ],
         )),
       ),

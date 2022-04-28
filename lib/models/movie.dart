@@ -4,14 +4,19 @@ class Movie {
   double? voteAverage;
   String? overview;
   String? posterPath;
+  String? releaseDate;
+  String? originalLanguage;
 
-  Movie(this.id, this.title, this.voteAverage, this.overview, this.posterPath);
+  Movie(this.id, this.title, this.voteAverage, this.overview, this.posterPath,
+      this.releaseDate, this.originalLanguage);
 
   Movie.fromJson(Map<String, dynamic> parsedJson) {
-    this.id = parsedJson['id'];
-    this.title = parsedJson['title'];
-    this.voteAverage = parsedJson['vote_average'] * 1.0;
-    this.overview = parsedJson['overview'];
-    this.posterPath = parsedJson['poster_path'];
+    id = parsedJson['id'];
+    title = parsedJson['title'];
+    voteAverage = parsedJson['vote_average'] * 1.0;
+    overview = parsedJson['overview'];
+    posterPath = parsedJson['poster_path'];
+    releaseDate = parsedJson['release_date'];
+    originalLanguage = parsedJson['original_language'];
   }
 }

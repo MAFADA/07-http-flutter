@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_request/models/movie.dart';
 
@@ -12,13 +13,17 @@ class HttpService {
 
     http.Response result = await http.get(Uri.parse(uri));
     if (result.statusCode == HttpStatus.ok) {
-      print("Sukses");
+      if (kDebugMode) {
+        print("Sukses");
+      }
       final jsonResponse = json.decode(result.body);
       final moviesMap = jsonResponse['results'];
       List movies = moviesMap.map((i) => Movie.fromJson(i)).toList();
       return movies;
     } else {
-      print("Fail");
+      if (kDebugMode) {
+        print("Fail");
+      }
       return null;
     }
   }

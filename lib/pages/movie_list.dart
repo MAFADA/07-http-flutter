@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:http_request/service/http_service.dart';
 
@@ -32,17 +34,25 @@ class _MovieListState extends State<MovieList> {
 
   @override
   Widget build(BuildContext context) {
+    final _random = Random();
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
-        title: Text("2031710168,M. Afada Nur Saiva Syahira/Popular Movies"),
+        title: Text("Popular Movies/2031710168,M. Afada Nur Saiva Syahira"),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3,
+          ),
           itemCount: (this.moviesCount == null) ? 0 : this.moviesCount,
           itemBuilder: (context, int position) {
             return Card(
-              color: Colors.white,
               elevation: 2.0,
               child: ListTile(
+                tileColor:
+                    Colors.primaries[_random.nextInt(Colors.primaries.length)]
+                        [_random.nextInt(9) * 100],
                 leading: Image.network(
                   'https://image.tmdb.org/t/p/w500/' +
                       movies![position].posterPath,
