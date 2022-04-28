@@ -15,7 +15,7 @@ class MovieDetail extends StatelessWidget {
       path = imgPath + movie.posterPath!;
     } else {
       path =
-          'https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg';
+          'https://blog.fluidui.com/content/images/2019/01/designernews.png';
     }
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
